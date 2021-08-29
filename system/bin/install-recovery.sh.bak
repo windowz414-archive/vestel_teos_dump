@@ -1,0 +1,6 @@
+#!/system/bin/sh
+if ! applypatch -c EMMC:/dev/block/bootdevice/by-name/recovery:30244080:90262a3918d90f38c348cdc54c399312a0642511; then
+  applypatch -b /system/etc/recovery-resource.dat EMMC:/dev/block/bootdevice/by-name/boot:27917548:36c1fd96b6fdaa3705fcce389daa15f32ed87ece EMMC:/dev/block/bootdevice/by-name/recovery 90262a3918d90f38c348cdc54c399312a0642511 30244080 36c1fd96b6fdaa3705fcce389daa15f32ed87ece:/system/recovery-from-boot.p && log -t recovery "Installing new recovery image: succeeded" || log -t recovery "Installing new recovery image: failed"
+else
+  log -t recovery "Recovery image already installed"
+fi

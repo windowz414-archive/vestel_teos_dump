@@ -1,0 +1,153 @@
+# Mandatory identifiers of language and region
+language: "tr"
+region:   "TR"
+
+# Definition of the phoneme set with distinctive features
+# Vowels
+phoneme_def {name: "i"  vowel: true rounded: false length: SHORT  height: CLOSE position: FRONT}
+phoneme_def {name: "y"  vowel: true rounded: true  length: SHORT  height: CLOSE position: FRONT}
+phoneme_def {name: "e"  vowel: true rounded: false length: SHORT  height: MID   position: FRONT}
+phoneme_def {name: "oe" vowel: true rounded: true  length: SHORT  height: MID   position: FRONT}
+phoneme_def {name: "eu" vowel: true rounded: false length: SHORT  height: CLOSE position: BACK}
+phoneme_def {name: "u"  vowel: true rounded: true  length: SHORT  height: CLOSE position: BACK}
+phoneme_def {name: "o"  vowel: true rounded: true  length: SHORT  height: MID   position: BACK}
+phoneme_def {name: "a"  vowel: true rounded: false length: SHORT  height: OPEN  position: CENTRAL}
+# Circumflex and long-vowels seen with soft_g
+phoneme_def {name: "ii"  vowel: true rounded: false length: LONG  height: CLOSE position: FRONT}
+phoneme_def {name: "yy"  vowel: true rounded: true  length: LONG  height: CLOSE position: FRONT}
+phoneme_def {name: "ee"  vowel: true rounded: false length: LONG  height: MID   position: FRONT}
+phoneme_def {name: "oee" vowel: true rounded: true  length: LONG  height: MID   position: FRONT}
+phoneme_def {name: "euu" vowel: true rounded: false length: LONG  height: CLOSE position: BACK}
+phoneme_def {name: "uu"  vowel: true rounded: true  length: LONG  height: CLOSE position: BACK}
+phoneme_def {name: "oo"  vowel: true rounded: true  length: LONG  height: MID   position: BACK}
+phoneme_def {name: "aa"  vowel: true rounded: false length: LONG  height: OPEN  position: CENTRAL}
+
+# These diphthongs will be used to replace offglides ending with /j/.
+phoneme_def {name: "ij"  vowel: true rounded: false length: DIPHTHONG  height: CLOSE position: FRONT}
+phoneme_def {name: "yj"  vowel: true rounded: true  length: DIPHTHONG  height: CLOSE position: FRONT}
+phoneme_def {name: "ej"  vowel: true rounded: false length: DIPHTHONG  height: MID   position: FRONT}
+phoneme_def {name: "oej" vowel: true rounded: true  length: DIPHTHONG  height: MID   position: FRONT}
+phoneme_def {name: "euj" vowel: true rounded: false length: DIPHTHONG  height: CLOSE position: BACK}
+phoneme_def {name: "uj"  vowel: true rounded: true  length: DIPHTHONG  height: CLOSE position: BACK}
+phoneme_def {name: "oj"  vowel: true rounded: true  length: DIPHTHONG  height: MID   position: BACK}
+phoneme_def {name: "aj"  vowel: true rounded: false length: DIPHTHONG  height: OPEN  position: CENTRAL}
+
+# Stops
+phoneme_def {name: "p"  vowel: false poa: LABIAL   manner: STOP  voiced: false}
+phoneme_def {name: "b"  vowel: false poa: LABIAL   manner: STOP  voiced: true}
+phoneme_def {name: "t"  vowel: false poa: DENTAL   manner: STOP  voiced: false}
+phoneme_def {name: "d"  vowel: false poa: ALVEOLAR manner: STOP  voiced: true}
+phoneme_def {name: "k"  vowel: false poa: VELAR    manner: STOP  voiced: false}
+phoneme_def {name: "g"  vowel: false poa: VELAR    manner: STOP  voiced: true}
+
+# Fricatives
+phoneme_def {name: "f"  vowel: false poa: LABIAL       manner: FRICATIVE voiced: false}
+phoneme_def {name: "v"  vowel: false poa: LABIAL       manner: FRICATIVE voiced: true }
+phoneme_def {name: "s"  vowel: false poa: ALVEOLAR     manner: FRICATIVE voiced: false}
+phoneme_def {name: "z"  vowel: false poa: ALVEOLAR     manner: FRICATIVE voiced: true }
+phoneme_def {name: "sh" vowel: false poa: POSTALVEOLAR manner: FRICATIVE voiced: false}
+phoneme_def {name: "zh" vowel: false poa: POSTALVEOLAR manner: FRICATIVE voiced: true}
+phoneme_def {name: "h"  vowel: false poa: GLOTTAL      manner: FRICATIVE voiced: false}
+
+# Approximants
+phoneme_def {name: "r"  vowel: false poa: ALVEOLAR     manner: APPROXIMANT voiced: true}
+phoneme_def {name: "l"  vowel: false poa: ALVEOLAR     manner: APPROXIMANT voiced: true}
+phoneme_def {name: "j"  vowel: false poa: PALATAL      manner: APPROXIMANT voiced: true}
+
+# Nasals
+phoneme_def {name: "m"  vowel: false poa: LABIAL   manner: NASAL voiced: true}
+phoneme_def {name: "n"  vowel: false poa: ALVEOLAR manner: NASAL voiced: true}
+
+# Affricates
+phoneme_def {name: "ch" vowel: false poa: POSTALVEOLAR manner: AFFRICATE voiced: false}
+phoneme_def {name: "jh" vowel: false poa: POSTALVEOLAR manner: AFFRICATE voiced: true}
+
+# Definitions of which vowels take which stress values.
+stress_def {stress: 1 vowels: "i y e oe eu u o a ii yy ee oee euu uu oo aa ij yj ej oej euj uj oj aj"}
+stress_def {stress: 2 vowels: "i y e oe eu u o a ii yy ee oee euu uu oo aa ij yj ej oej euj uj oj aj"}
+
+single_primary_stress_required: true
+
+primary_stress: PRIMARY
+
+# Definitions of legal onsets. Each group defines a set of phonemes
+# which are permissible in that position.
+
+# Single-phoneme onsets
+onset {group: "p b t d k g f v s z sh zh h r l j m n ch jh"}
+
+# Single-phoneme codas
+coda {group: "p b t d k g f v s z sh zh h r l m n ch jh"}
+
+# Two phoneme codas
+coda {group: "f h p" group: "t"}
+coda {group: "k" group: "s t"}
+coda {group: "l" group: "f k m n p t ch h s"}
+coda {group: "m" group: "b k p t f s"}
+coda {group: "v" group: "k s"}
+coda {group: "n" group: "d k s sh t z ch g"}
+coda {group: "r" group:  "d f g zh h k m n p s sh t ch v z"}
+coda {group: "s" group: "k p t"}
+coda {group: "sh" group: "k t"}
+coda {group: "z" group: "m"}
+coda {group: "g" group: "l"}
+
+# Two phoneme foreign codas
+foreign_coda {group: "b d g l m t v" group: "z" }
+foreign_coda {group: "d j l m p t v" group: "s" }
+foreign_coda {group: "l m s v z" group: "d" }
+foreign_coda {group: "r" group: "b l" }
+foreign_coda {group: "j" group: "n" }
+foreign_coda {group: "n" group: "zh" }
+
+# Three phoneme foreign codas
+foreign_coda {group: "k n r s" group: "t" group: "s" }
+foreign_coda {group: "l r s" group: "k" group: "s" }
+foreign_coda {group: "n r" group: "d" group: "z" }
+foreign_coda {group: "n" group: "g" group: "s t z" }
+foreign_coda {group: "r" group: "l n v" group: "z" }
+foreign_coda {group: "r" group: "m n" group: "d" }
+foreign_coda {group: "r" group: "s" group: "t" }
+
+# four phoneme foreign codas
+foreign_coda {group: "n" group: "g" group: "t" group: "s" }
+
+legalizing_vowel: "a"
+wordid_definition: "[a-zçğıöşşüîâûàáãéêíóôõú]+-?\'?[a-zçğıöşüîâûàáãéêíóôõú]*_?[-a-z0-9_\'çğıöşüîâû^]*"
+spelling_definition: "^([a-zçğıöşüîâûàáãéêíóôõú]+([a-z-\'çğıöşüîâûàáãéêíóôõú]+[a-z\'çğıöşüîâûàáãéêíóôõú])?|[αβΧΔεηΓικΛμνΩΟΦΠΨΡΣΤΘΥΞζχδγλωοφπψρστθυξς])$"
+
+# Phone mapping for diphone fallback:
+phoneme_fallback_map { phoneme: "a" group: "aa eu" }
+phoneme_fallback_map { phoneme: "aa" group: "a" }
+phoneme_fallback_map { phoneme: "e" group: "i" }
+phoneme_fallback_map { phoneme: "ee" group: "ii ej ij" }
+phoneme_fallback_map { phoneme: "i" group: "ii e" }
+phoneme_fallback_map { phoneme: "ii" group: "i ij" }
+phoneme_fallback_map { phoneme: "o" group: "u" }
+phoneme_fallback_map { phoneme: "oo" group: "o uu" }
+phoneme_fallback_map { phoneme: "u" group: "uu o" }
+phoneme_fallback_map { phoneme: "uu" group: "u oo" }
+phoneme_fallback_map { phoneme: "y" group: "oe" }
+phoneme_fallback_map { phoneme: "yy" group: "y yj oee" }
+phoneme_fallback_map { phoneme: "oe" group: "y" }
+phoneme_fallback_map { phoneme: "oee" group: "oe oej yy" }
+phoneme_fallback_map { phoneme: "eu" group: "a" }
+phoneme_fallback_map { phoneme: "euu" group: "eu" }
+phoneme_fallback_map { phoneme: "p" group: "b" }
+phoneme_fallback_map { phoneme: "t" group: "d" }
+phoneme_fallback_map { phoneme: "k" group: "g" }
+phoneme_fallback_map { phoneme: "b" group: "p" }
+phoneme_fallback_map { phoneme: "d" group: "t" }
+phoneme_fallback_map { phoneme: "g" group: "k" }
+phoneme_fallback_map { phoneme: "f" group: "v" }
+phoneme_fallback_map { phoneme: "v" group: "f" }
+phoneme_fallback_map { phoneme: "s" group: "z" }
+phoneme_fallback_map { phoneme: "z" group: "s" }
+phoneme_fallback_map { phoneme: "m" group: "n" }
+phoneme_fallback_map { phoneme: "n" group: "m" }
+phoneme_fallback_map { phoneme: "l" group: "r" }
+phoneme_fallback_map { phoneme: "ch" group: "jh" }
+phoneme_fallback_map { phoneme: "zh" group: "sh" }
+phoneme_fallback_map { phoneme: "jh" group: "ch" }
+phoneme_fallback_map { phoneme: "r" group: "l" }
+phoneme_fallback_map { phoneme: "sh" group: "zh" }

@@ -1,0 +1,6 @@
+service poweroffhandler /system/bin/poweroffhandler
+    class core
+    user graphics
+    group graphics audio
+    disabled
+    oneshot
